@@ -62,10 +62,23 @@
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+(add-hook 'clojure-mode-hook #'pretty-lambdas)
+
+;; scheme stuff
+(add-hook 'scheme-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook #'pretty-lambdas)
+
+;; font-lock
+(defun pretty-lambdas ()
+  (font-lock-add-keywords
+   nil `(("\\(\\<lambda\\>\\)"
+          (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                    ,(make-char 'greek-iso8859-7 107))
+                    nil))))))
+
 
 ;; set up path
 (exec-path-from-shell-initialize)
-
 
 ;; base load path
 (defconst dotfiles-dir
