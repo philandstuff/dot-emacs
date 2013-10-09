@@ -68,6 +68,14 @@
 (add-hook 'scheme-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook #'pretty-lambdas)
 
+;; haskell stuff
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+
+;; set up path
+(exec-path-from-shell-initialize)
+
+
 ;; font-lock
 (defun pretty-lambdas ()
   (font-lock-add-keywords
