@@ -90,3 +90,8 @@
 
 ;; import local settings
 (require 'init-local nil 'noerror)
+
+
+(custom-set-variables
+ '(geiser-racket-binary "~/racket/bin/racket"))
+
