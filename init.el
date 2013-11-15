@@ -65,3 +65,15 @@
 
 ;; set up path
 (exec-path-from-shell-initialize)
+
+
+;; base load path
+(defconst dotfiles-dir
+  (file-name-directory
+   (or (buffer-file-name) load-file-name))
+  "Base path for customised Emacs configuration")
+
+(add-to-list 'load-path dotfiles-dir)
+
+;; import local settings
+(require 'init-local nil 'noerror)
