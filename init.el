@@ -101,5 +101,5 @@
 
 
 (custom-set-variables
- '(geiser-racket-binary "~/racket/bin/racket"))
-
+ '(geiser-racket-binary "~/racket/bin/racket")
+ '(markdown-command "kramdown"))
