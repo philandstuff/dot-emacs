@@ -53,6 +53,14 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
+;; org mode shortcuts
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+;; magit-status
+(global-set-key "\C-cg" 'magit-status)
+
 ;; set up various mode hooks
 ;; *.pp -> puppet-mode
 ;; *.cljs -> clojure-mode
