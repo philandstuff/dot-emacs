@@ -112,4 +112,5 @@
 
 (custom-set-variables
  '(geiser-racket-binary "~/racket/bin/racket")
- '(markdown-command "kramdown"))
+ '(markdown-command "kramdown")
+ '(org-agenda-files (quote ("~/org/todo.org"))))
