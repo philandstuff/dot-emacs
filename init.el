@@ -46,7 +46,7 @@
 ;; enable ido
 (require 'ido)
 (ido-mode t)
-(ido-ubiquitous t)
+(ido-ubiquitous-mode t)
 
 ;; enable ido for M-x
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
