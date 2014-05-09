@@ -19,12 +19,12 @@
 
 (defconst important-packages
   '(
+    cider
     clojure-mode
     exec-path-from-shell
     ido-ubiquitous
     magit
     markdown-mode
-    nrepl
     org
     paredit
     puppet-mode
@@ -114,3 +114,4 @@
  '(geiser-racket-binary "~/racket/bin/racket")
  '(markdown-command "kramdown")
  '(org-agenda-files (quote ("~/org/todo.org"))))
+(put 'narrow-to-region 'disabled nil)
