@@ -106,6 +106,15 @@
 
 (add-to-list 'load-path dotfiles-dir)
 
+;; active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((ditaa . t)
+   (python . t)
+   (ruby . t)
+   ))
+(setq org-src-fontify-natively t)
+
 ;; import local settings
 (require 'init-local nil 'noerror)
 
