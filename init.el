@@ -122,5 +122,6 @@
 (custom-set-variables
  '(geiser-racket-binary "~/racket/bin/racket")
  '(markdown-command "kramdown")
- '(org-agenda-files (quote ("~/org/todo.org"))))
+ '(org-agenda-files (quote ("~/org/todo.org")))
+ '(org-ditaa-jar-path "~/bin/ditaa.jar"))
 (put 'narrow-to-region 'disabled nil)
