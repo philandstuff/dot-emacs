@@ -106,6 +106,13 @@
 
 (add-to-list 'load-path dotfiles-dir)
 
+;; twitter stuff
+
+(setq twittering-initial-timeline-spec-string
+      '(":home"
+        ":replies"
+        ))
+
 ;; active Babel languages
 (org-babel-do-load-languages
  'org-babel-load-languages
