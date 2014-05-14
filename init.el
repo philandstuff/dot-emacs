@@ -116,7 +116,8 @@
 ;; active Babel languages
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((ditaa . t)
+ '((clojure . t)
+   (ditaa . t)
    (python . t)
    (ruby . t)
    ))
