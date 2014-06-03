@@ -6,19 +6,12 @@
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-;; disable ui frills
-(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
-  (when (fboundp mode) (funcall mode -1)))
-
-;; better unique buffer names
-(require 'uniquify)
-
 (setq inhibit-startup-message t
-      uniquify-buffer-name-style 'forward
       backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
 
 (defconst important-packages
   '(
+    better-defaults
     cider
     clojure-mode
     exec-path-from-shell
@@ -38,7 +31,6 @@
     (when (not (package-installed-p pkg))
       (package-install pkg))))
 
-(set-default 'indent-tabs-mode nil)
 (set-default 'indicate-empty-lines t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
