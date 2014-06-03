@@ -125,3 +125,4 @@
  '(org-agenda-files (quote ("~/org/todo.org")))
  '(org-ditaa-jar-path "~/bin/ditaa.jar"))
 (put 'narrow-to-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
