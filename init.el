@@ -123,7 +123,7 @@
  '(geiser-racket-binary "~/racket/bin/racket")
  '(markdown-command "kramdown")
  '(org-agenda-files (quote ("~/org/todo.org")))
- '(org-ditaa-jar-path "~/bin/ditaa.jar"))
+ '(org-ditaa-jar-path "~/bin/ditaa.jar")
  '(rcirc-buffer-maximum-lines 2000))
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
