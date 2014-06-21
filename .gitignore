@@ -1,8 +1,8 @@
 .smex-items
-auto-save-list
-backups
+/auto-save-list
+/backups
+/elpa
 /eshell/history
 /eshell/lastdir
 /init-local.el
-elpa
-url
+/url
