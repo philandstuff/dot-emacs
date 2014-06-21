@@ -1,8 +1,12 @@
 .smex-items
 /auto-save-list
 /backups
+/bookmarks
 /elpa
 /eshell/history
 /eshell/lastdir
 /init-local.el
+/places
+/session.*
+/tramp
 /url
