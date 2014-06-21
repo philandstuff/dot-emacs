@@ -115,6 +115,9 @@
    ))
 (setq org-src-fontify-natively t)
 
+;; org export options
+(setq org-export-with-toc nil)
+
 ;; import local settings
 (require 'init-local nil 'noerror)
 
