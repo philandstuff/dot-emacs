@@ -72,7 +72,7 @@
 
 ;; haskell stuff
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
+(add-hook 'haskell-mode-hook #'pretty-arrows)
 
 ;; set up path
 (exec-path-from-shell-initialize)
@@ -85,6 +85,13 @@
           (0 (progn (compose-region (match-beginning 1) (match-end 1)
                                     ,(make-char 'greek-iso8859-7 107))
                     nil))))))
+(defun pretty-arrows ()
+  (font-lock-add-keywords
+   nil `(("\\(->\\)"
+          (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                    8594 ;; unicode RIGHT ARROW
+                                    )))))))
+
 
 
 ;; set up path
