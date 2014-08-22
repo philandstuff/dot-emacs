@@ -90,6 +90,14 @@
    nil `(("\\(->\\)"
           (0 (progn (compose-region (match-beginning 1) (match-end 1)
                                     8594 ;; unicode RIGHT ARROW
+                                    ))))
+         ("\\(<-\\)"
+          (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                    8592 ;; unicode LEFT ARROW
+                                    ))))
+         ("\\(\\\\\\)"
+          (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                    955 ;; unicode GREEK SMALL LETTER LAMBDA
                                     )))))))
 
 
