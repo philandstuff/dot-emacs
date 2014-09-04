@@ -6,7 +6,8 @@
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-;; I want this really early on
+;; I want this really early on so you don't see the startup message
+;; flash on the screen before this suppresses it
 (setq inhibit-startup-message t)
 
 (defun maybe-install-and-require (p)
