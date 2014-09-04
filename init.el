@@ -58,10 +58,6 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook #'pretty-arrows)
 
-;; set up path
-(exec-path-from-shell-initialize)
-
-
 ;; font-lock
 (defun pretty-lambdas ()
   (font-lock-add-keywords
@@ -84,10 +80,6 @@
                                     955 ;; unicode GREEK SMALL LETTER LAMBDA
                                     )))))))
 
-
-
-;; set up path
-(exec-path-from-shell-initialize)
 
 ;; base load path
 (defconst dotfiles-dir

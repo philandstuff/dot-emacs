@@ -46,6 +46,17 @@
   (global-set-key "\C-cg" 'magit-status)
 #+end_src
 
+** exec-path-from-shell
+
+   This is a little package that initializes emacs's =exec-path=
+   variable from whatever your shell's =$PATH= is.
+
+#+begin_src emacs-lisp
+  (maybe-install-and-require 'exec-path-from-shell)
+  (exec-path-from-shell-initialize)
+#+end_src
+
+
 * Lisp stuff
 
   [[https://github.com/clojure-emacs/cider][cider]] is a package for live-coding Clojure by interacting with a
@@ -63,13 +74,17 @@
   (maybe-install-and-require 'paredit)
 #+end_src
 
+* Markdown
+
+#+begin_src emacs-lisp
+  (maybe-install-and-require 'markdown-mode)
+#+end_src
+
 * Unsorted
 
   #+begin_src emacs-lisp
     (defconst important-packages
       '(
-        exec-path-from-shell
-        markdown-mode
         puppet-mode
     )
       "packages to ensure are always present on startup")
