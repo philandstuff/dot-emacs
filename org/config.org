@@ -1,3 +1,5 @@
+#  -*- coding: utf-8 -*-
+
 * Global stuff
 
 ** better-defaults
@@ -59,19 +61,64 @@
 
 * Lisp stuff
 
-  [[https://github.com/clojure-emacs/cider][cider]] is a package for live-coding Clojure by interacting with a
-  Clojure nREPL instance.  [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] is the major mode for editing
-  clojure code.
+** Clojure
 
-  Paredit is a minor mode for enforcing balanced parentheses and
-  providing operations on sets of parentheses -- generally "slurp" and
-  "barf" to swallow or remove terms at the right-hand side of a paren
-  pair.  Naturally, this is a good fit for lisps.
+   [[https://github.com/clojure-emacs/cider][cider]] is a package for live-coding Clojure by interacting with a
+   Clojure nREPL instance.  [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] is the major mode for editing
+   clojure code.
 
 #+begin_src emacs-lisp
   (maybe-install-and-require 'cider)
   (maybe-install-and-require 'clojure-mode)
+#+end_src
+
+   Files ending with =.clj= will automatically use clojure-mode, but
+   =.cljs= seems to need configuration:
+
+#+begin_src emacs-lisp
+  (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+#+end_src
+
+** Pretty lambdas
+
+   Font-lock stuff to display character sequences such as =lambda= as
+   unicode chars such as λ.
+
+   First, we define the font-lock function to detect the appropriate
+   sequence and what to replace it with:
+
+#+begin_src emacs-lisp
+  (defun pretty-lambdas ()
+    (font-lock-add-keywords
+     nil `(("\\(\\<lambda\\>\\)"
+            (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                      ,(make-char 'greek-iso8859-7 107))
+                      nil))))))
+#+end_src
+
+   Then we add it to some lisp modes:
+
+#+begin_src emacs-lisp
+  (add-hook 'clojure-mode-hook #'pretty-lambdas)
+  (add-hook 'scheme-mode-hook #'pretty-lambdas)
+#+end_src
+
+** Paredit
+
+   Paredit is a minor mode for enforcing balanced parentheses and
+   providing operations on sets of parentheses -- generally "slurp"
+   and "barf" to swallow or remove terms at the right-hand side of a
+   paren pair.  Naturally, this is a good fit for lisps.
+
+   I'm not entirely sure I understand the =autoload= line here.  I
+   think I cribbed it from somewhere on the internet.
+
+#+begin_src emacs-lisp
   (maybe-install-and-require 'paredit)
+  (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'scheme-mode-hook #'enable-paredit-mode)
 #+end_src
 
 * puppet
