@@ -192,3 +192,66 @@
   (maybe-install-and-require 'markdown-mode)
 #+end_src
 
+* org mode
+
+** capture
+
+   Org mode supports a feature called "[[http://orgmode.org/manual/Capture.html][capture]]", which allows you to
+   quickly capture TODO items while working on something else.  This
+   needs a global key combination (=C-c c=) to capture notes.
+
+   We also need to tell org which file captured notes should be added
+   to.
+
+#+begin_src emacs-lisp
+  (global-set-key "\C-cc" 'org-capture)
+  (setq org-default-notes-file (concat org-directory "/todo.org"))
+#+end_src
+
+** other global keys
+
+#+begin_src emacs-lisp
+  (global-set-key "\C-cl" 'org-store-link)
+  (global-set-key "\C-ca" 'org-agenda)
+  (global-set-key "\C-cb" 'org-iswitchb)
+#+end_src
+
+** export options
+
+   I use org-reveal to generate presentations with org-mode.  Normally
+   org-mode will helpfully generate a table of contents on html
+   export, but this isn't great for a reveal presentation, so let's
+   disable it:
+
+#+begin_src emacs-lisp
+  (setq org-export-with-toc nil)
+#+end_src
+
+** org-babel
+
+   [[http://orgmode.org/worg/org-contrib/babel/][Babel]] is org-mode's ability to execute source code within
+   documents.  (It's how this config file gets run.)
+
+   To avoid running arbitrary code, each specific language that you
+   want to allow org-mode to run code for on export needs to be
+   enabled here:
+
+#+begin_src emacs-lisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((clojure . t)
+     (ditaa . t)
+     (python . t)
+     (ruby . t)
+     ))
+#+end_src
+
+   (ditaa is a language for drawing diagrams in ascii art and
+   generating graphical output.  org-mode has builtin support for
+   ditaa.)
+
+   We want to fontify code in code blocks:
+
+#+begin_src emacs-lisp
+  (setq org-src-fontify-natively t)
+#+end_src

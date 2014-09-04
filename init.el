@@ -28,13 +28,6 @@
 
 (org-babel-load-file (concat user-emacs-directory "org/config.org"))
 
-;; org mode shortcuts
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(setq org-default-notes-file (concat org-directory "/todo.org"))
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-
 ;; set super (windows) key to act as meta
 (when (string-equal system-type "gnu/linux")
   (setq x-super-keysym 'meta))
@@ -54,22 +47,8 @@
         ":replies"
         ))
 
-;; active Babel languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((clojure . t)
-   (ditaa . t)
-   (python . t)
-   (ruby . t)
-   ))
-(setq org-src-fontify-natively t)
-
-;; org export options
-(setq org-export-with-toc nil)
-
 ;; import local settings
 (require 'init-local nil 'noerror)
-
 
 (custom-set-variables
  '(geiser-racket-binary "~/racket/bin/racket")
