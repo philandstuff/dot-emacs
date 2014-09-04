@@ -58,6 +58,25 @@
   (exec-path-from-shell-initialize)
 #+end_src
 
+** misc settings
+
+*** y-or-n-p
+
+   This replaces dialogs which require a full "yes" or "no" to just
+   require a simple "y" or "n".
+
+#+begin_src emacs-lisp
+  (defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
+*** indicate empty lines
+
+    This adds a graphic in the margin to show how many empty lines you
+    have beyond the end of your file's content.
+
+#+begin_src emacs-lisp
+  (set-default 'indicate-empty-lines t)
+#+end_src
 
 * Lisp stuff
 

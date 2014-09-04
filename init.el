@@ -27,10 +27,6 @@
 
 (org-babel-load-file (concat user-emacs-directory "org/config.org"))
 
-(set-default 'indicate-empty-lines t)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
-
 ;; org mode shortcuts
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
