@@ -35,6 +35,8 @@
   (dolist (pkg important-packages)
     (maybe-install-and-require pkg)))
 
+(org-babel-load-file (concat user-emacs-directory "org/config.org"))
+
 (set-default 'indicate-empty-lines t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)

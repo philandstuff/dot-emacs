@@ -6,6 +6,7 @@
 /eshell/history
 /eshell/lastdir
 /init-local.el
+/org/*.el
 /places
 /session.*
 /tramp

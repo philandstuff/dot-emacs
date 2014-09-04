@@ -1,0 +1,6 @@
+* I don't do anything yet
+
+ #+begin_src emacs-lisp
+   1 ; just a value to ensure babel outputs a config.el file
+ #+end_src
+
