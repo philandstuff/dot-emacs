@@ -14,6 +14,17 @@
     (package-install p))
   (require p))
 
+;; This bootstraps us if we don't have anything
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+;; org-mode always needs to be installed in an emacs where it isn't loaded.
+;;
+;; note that otfrom's original version installs org-plus-contrib from
+;; http://orgmode.org/elpa/ -- I don't know quite why yet so sticking
+;; with this for the moment
+(maybe-install-and-require 'org)
+
 (defconst important-packages
   '(
     better-defaults
@@ -23,15 +34,10 @@
     ido-ubiquitous
     magit
     markdown-mode
-    org
     paredit
     puppet-mode
     smex)
   "packages to ensure are always present on startup")
-
-;; This bootstraps us if we don't have anything
-(when (not package-archive-contents)
-  (package-refresh-contents))
 
 (dolist (pkg important-packages)
   (maybe-install-and-require pkg))
