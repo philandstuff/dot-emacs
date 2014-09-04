@@ -30,7 +30,6 @@
 ;; org mode shortcuts
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
-(require 'org)
 (setq org-default-notes-file (concat org-directory "/todo.org"))
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
