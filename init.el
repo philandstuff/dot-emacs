@@ -9,6 +9,11 @@
 (setq inhibit-startup-message t
       backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
 
+(defun maybe-install-and-require (p)
+  (when (not (package-installed-p p))
+    (package-install p))
+  (require p))
+
 (defconst important-packages
   '(
     better-defaults
@@ -28,8 +33,7 @@
 (when (cl-notevery 'package-installed-p important-packages)
   (package-refresh-contents)
   (dolist (pkg important-packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
+    (maybe-install-and-require pkg)))
 
 (set-default 'indicate-empty-lines t)
 
