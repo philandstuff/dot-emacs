@@ -74,23 +74,24 @@
   (maybe-install-and-require 'paredit)
 #+end_src
 
+* puppet
+
+  [[https://docs.puppetlabs.com/puppet/][Puppet]] is a configuration management language.  First, we want the
+  major mode for editing puppet code:
+
+#+begin_src emacs-lisp
+  (maybe-install-and-require 'puppet-mode)
+#+end_src
+
+  When we edit =.pp= files, we want to automatically run puppet-mode:
+
+#+begin_src emacs-lisp
+  (add-to-list 'auto-mode-alist '("\.pp$" . puppet-mode))
+#+end_src
+
 * Markdown
 
 #+begin_src emacs-lisp
   (maybe-install-and-require 'markdown-mode)
 #+end_src
-
-* Unsorted
-
-  #+begin_src emacs-lisp
-    (defconst important-packages
-      '(
-        puppet-mode
-    )
-      "packages to ensure are always present on startup")
-
-    (dolist (pkg important-packages)
-      (maybe-install-and-require pkg))
-
-  #+end_src
 

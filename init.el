@@ -40,11 +40,9 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 ;; set up various mode hooks
-;; *.pp -> puppet-mode
 ;; *.cljs -> clojure-mode
 ;; clojure-mode -> paredit
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\.pp$" . puppet-mode))
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
