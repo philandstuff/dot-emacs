@@ -1,8 +1,6 @@
-* Install important packages
+* Global stuff
 
-  There are some packages I just can't do without.  Install them up
-  front and ensure they are always present.
-
+** better-defaults
   [[https://github.com/technomancy/better-defaults][better-defaults]] does a bunch of generic emacs interface tidying,
   including:
   - better buffer unique names
@@ -11,14 +9,12 @@
   (maybe-install-and-require 'better-defaults)
 #+end_src
 
-  [[https://github.com/clojure-emacs/cider][cider]] is a package for live-coding Clojure by interacting with a
-  Clojure nREPL instance.  [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] is the major mode for editing
-  clojure code.
+*** TODO check on backup directory duplication?
 
-#+begin_src emacs-lisp
-  (maybe-install-and-require 'cider)
-  (maybe-install-and-require 'clojure-mode)
-#+end_src
+    better-defaults apparently now ensures backup files go into
+    ~/.emacs.d; check if [[file:../init.el::backup-directory-alist%20`(("."%20.%20,(concat%20user-emacs-directory%20"backups"))))][my config]] is therefore redundant
+
+** ido
 
   ido-ubiquitous enables ido in many places.  (better-defaults already
   enables ido for some things, this just goes further).  smex adds
@@ -34,6 +30,8 @@
   (global-set-key (kbd "M-x") 'smex)
 #+end_src
 
+** magit
+
   [[https://github.com/magit/magit][magit]] is the only way to interact with git.  Seriously, even when
   I'm using other editors, I'll keep emacs open in order to use magit.
   The main reasons I like it:
@@ -42,24 +40,36 @@
     commit, rebase, merge..)
   As a result, I bind a global key combination to =magit-status= so
   it's always easy to get to.
+
 #+begin_src emacs-lisp
   (maybe-install-and-require 'magit)
   (global-set-key "\C-cg" 'magit-status)
 #+end_src
 
+* Lisp stuff
 
-** TODO backup directory duplication?
+  [[https://github.com/clojure-emacs/cider][cider]] is a package for live-coding Clojure by interacting with a
+  Clojure nREPL instance.  [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] is the major mode for editing
+  clojure code.
 
-   better-defaults apparently now ensures backup files go into
-   ~/.emacs.d; check if [[file:~/.emacs.d/init.el::backup-directory-alist%20`(("."%20.%20,(concat%20user-emacs-directory%20"backups"))))][my config]] is therefore redundant
+  Paredit is a minor mode for enforcing balanced parentheses and
+  providing operations on sets of parentheses -- generally "slurp" and
+  "barf" to swallow or remove terms at the right-hand side of a paren
+  pair.  Naturally, this is a good fit for lisps.
+
+#+begin_src emacs-lisp
+  (maybe-install-and-require 'cider)
+  (maybe-install-and-require 'clojure-mode)
+  (maybe-install-and-require 'paredit)
+#+end_src
+
+* Unsorted
 
   #+begin_src emacs-lisp
     (defconst important-packages
       '(
         exec-path-from-shell
-        magit
         markdown-mode
-        paredit
         puppet-mode
     )
       "packages to ensure are always present on startup")
