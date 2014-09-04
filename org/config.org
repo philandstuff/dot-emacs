@@ -140,6 +140,42 @@
   (add-hook 'scheme-mode-hook #'enable-paredit-mode)
 #+end_src
 
+* Haskell
+
+** Haskell mode
+
+#+begin_src emacs-lisp
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+#+end_src
+
+** Pretty arrows
+
+   Font-lock stuff:
+
+   - =->= (used in function types) gets turned into →
+   - =<-= (used in do-notation) gets turned into ←
+   - =\= gets turned into λ
+
+#+begin_src emacs-lisp
+  (defun pretty-arrows ()
+    (font-lock-add-keywords
+     nil `(("\\(->\\)"
+            (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                      8594 ;; unicode RIGHT ARROW
+                                      ))))
+           ("\\(<-\\)"
+            (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                      8592 ;; unicode LEFT ARROW
+                                      ))))
+           ("\\(\\\\\\)"
+            (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                      955 ;; unicode GREEK SMALL LETTER LAMBDA
+                                      )))))))
+
+  (add-hook 'haskell-mode-hook #'pretty-arrows)
+#+end_src
+
+
 * puppet
 
   [[https://docs.puppetlabs.com/puppet/][Puppet]] is a configuration management language.  First, we want the

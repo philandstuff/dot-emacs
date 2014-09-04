@@ -34,27 +34,6 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-;; haskell stuff
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-(add-hook 'haskell-mode-hook #'pretty-arrows)
-
-;; font-lock
-(defun pretty-arrows ()
-  (font-lock-add-keywords
-   nil `(("\\(->\\)"
-          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                    8594 ;; unicode RIGHT ARROW
-                                    ))))
-         ("\\(<-\\)"
-          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                    8592 ;; unicode LEFT ARROW
-                                    ))))
-         ("\\(\\\\\\)"
-          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                    955 ;; unicode GREEK SMALL LETTER LAMBDA
-                                    )))))))
-
-
 ;; base load path
 (defconst dotfiles-dir
   (file-name-directory
