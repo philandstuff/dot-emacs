@@ -29,11 +29,12 @@
     smex)
   "packages to ensure are always present on startup")
 
-(require 'cl-lib)
-(when (cl-notevery 'package-installed-p important-packages)
-  (package-refresh-contents)
-  (dolist (pkg important-packages)
-    (maybe-install-and-require pkg)))
+;; This bootstraps us if we don't have anything
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(dolist (pkg important-packages)
+  (maybe-install-and-require pkg))
 
 (org-babel-load-file (concat user-emacs-directory "org/config.org"))
 
