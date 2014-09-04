@@ -25,38 +25,11 @@
 ;; with this for the moment
 (maybe-install-and-require 'org)
 
-(defconst important-packages
-  '(
-    better-defaults
-    cider
-    clojure-mode
-    exec-path-from-shell
-    ido-ubiquitous
-    magit
-    markdown-mode
-    paredit
-    puppet-mode
-    smex)
-  "packages to ensure are always present on startup")
-
-(dolist (pkg important-packages)
-  (maybe-install-and-require pkg))
-
 (org-babel-load-file (concat user-emacs-directory "org/config.org"))
 
 (set-default 'indicate-empty-lines t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
-
-;; enable ido
-(require 'ido)
-(ido-mode t)
-(ido-ubiquitous-mode t)
-
-;; enable ido for M-x
-(setq smex-save-file (concat user-emacs-directory ".smex-items"))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
 
 ;; org mode shortcuts
 (global-set-key "\C-cl" 'org-store-link)
@@ -65,8 +38,6 @@
 (setq org-default-notes-file (concat org-directory "/todo.org"))
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
-;; magit-status
-(global-set-key "\C-cg" 'magit-status)
 
 ;; set up various mode hooks
 ;; *.pp -> puppet-mode

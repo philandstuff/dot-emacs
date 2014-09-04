@@ -1,6 +1,71 @@
-* I don't do anything yet
+* Install important packages
 
- #+begin_src emacs-lisp
-   1 ; just a value to ensure babel outputs a config.el file
- #+end_src
+  There are some packages I just can't do without.  Install them up
+  front and ensure they are always present.
+
+  [[https://github.com/technomancy/better-defaults][better-defaults]] does a bunch of generic emacs interface tidying,
+  including:
+  - better buffer unique names
+  - turn off scrollbar, menu bar, toolbar
+#+begin_src emacs-lisp
+  (maybe-install-and-require 'better-defaults)
+#+end_src
+
+  [[https://github.com/clojure-emacs/cider][cider]] is a package for live-coding Clojure by interacting with a
+  Clojure nREPL instance.  [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] is the major mode for editing
+  clojure code.
+
+#+begin_src emacs-lisp
+  (maybe-install-and-require 'cider)
+  (maybe-install-and-require 'clojure-mode)
+#+end_src
+
+  ido-ubiquitous enables ido in many places.  (better-defaults already
+  enables ido for some things, this just goes further).  smex adds
+  ido-like behaviour to =M-x=.
+#+begin_src emacs-lisp
+  (maybe-install-and-require 'ido-ubiquitous)
+  (ido-mode t)
+  (ido-ubiquitous-mode t)
+
+  (maybe-install-and-require 'smex)
+  (setq smex-save-file (concat user-emacs-directory ".smex-items"))
+  (smex-initialize)
+  (global-set-key (kbd "M-x") 'smex)
+#+end_src
+
+  [[https://github.com/magit/magit][magit]] is the only way to interact with git.  Seriously, even when
+  I'm using other editors, I'll keep emacs open in order to use magit.
+  The main reasons I like it:
+  - easy manipulation of individual lines within a changeset
+  - one-character commands for all common operations (push, pull,
+    commit, rebase, merge..)
+  As a result, I bind a global key combination to =magit-status= so
+  it's always easy to get to.
+#+begin_src emacs-lisp
+  (maybe-install-and-require 'magit)
+  (global-set-key "\C-cg" 'magit-status)
+#+end_src
+
+
+** TODO backup directory duplication?
+
+   better-defaults apparently now ensures backup files go into
+   ~/.emacs.d; check if [[file:~/.emacs.d/init.el::backup-directory-alist%20`(("."%20.%20,(concat%20user-emacs-directory%20"backups"))))][my config]] is therefore redundant
+
+  #+begin_src emacs-lisp
+    (defconst important-packages
+      '(
+        exec-path-from-shell
+        magit
+        markdown-mode
+        paredit
+        puppet-mode
+    )
+      "packages to ensure are always present on startup")
+
+    (dolist (pkg important-packages)
+      (maybe-install-and-require pkg))
+
+  #+end_src
 
