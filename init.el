@@ -34,6 +34,10 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+;; set super (windows) key to act as meta
+(when (string-equal system-type "gnu/linux")
+  (setq x-super-keysym 'meta))
+
 ;; base load path
 (defconst dotfiles-dir
   (file-name-directory
