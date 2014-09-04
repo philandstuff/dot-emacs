@@ -11,11 +11,6 @@
   (maybe-install-and-require 'better-defaults)
 #+end_src
 
-*** TODO check on backup directory duplication?
-
-    better-defaults apparently now ensures backup files go into
-    ~/.emacs.d; check if [[file:../init.el::backup-directory-alist%20`(("."%20.%20,(concat%20user-emacs-directory%20"backups"))))][my config]] is therefore redundant
-
 ** ido
 
   ido-ubiquitous enables ido in many places.  (better-defaults already

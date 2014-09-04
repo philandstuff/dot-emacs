@@ -6,8 +6,8 @@
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(setq inhibit-startup-message t
-      backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+;; I want this really early on
+(setq inhibit-startup-message t)
 
 (defun maybe-install-and-require (p)
   (when (not (package-installed-p p))
