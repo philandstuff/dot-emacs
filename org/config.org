@@ -1,13 +1,13 @@
 #  -*- coding: utf-8 -*-
 
 * Config helpers
-** maybe-install-and-require
+** ensure-installed-and-require
 
    This function calls =require= on a package, installing it if it's
    not already installed.
 
 #+begin_src emacs-lisp
-  (defun maybe-install-and-require (p)
+  (defun ensure-installed-and-require (p)
     (when (not (package-installed-p p))
       (package-install p))
     (require p))
@@ -20,7 +20,7 @@
    [[magit]] for an example of use.
 
 #+begin_src emacs-lisp
-  (maybe-install-and-require 'diminish)
+  (ensure-installed-and-require 'diminish)
 #+end_src
 
 * Global settings
@@ -30,7 +30,7 @@
   - better buffer unique names
   - turn off scrollbar, menu bar, toolbar
 #+begin_src emacs-lisp
-  (maybe-install-and-require 'better-defaults)
+  (ensure-installed-and-require 'better-defaults)
 #+end_src
 
 ** ido
@@ -39,11 +39,11 @@
   enables ido for some things, this just goes further).  smex adds
   ido-like behaviour to =M-x=.
 #+begin_src emacs-lisp
-  (maybe-install-and-require 'ido-ubiquitous)
+  (ensure-installed-and-require 'ido-ubiquitous)
   (ido-mode t)
   (ido-ubiquitous-mode t)
 
-  (maybe-install-and-require 'smex)
+  (ensure-installed-and-require 'smex)
   (setq smex-save-file (concat user-emacs-directory ".smex-items"))
   (smex-initialize)
   (global-set-key (kbd "M-x") 'smex)
@@ -61,7 +61,7 @@
    it's always easy to get to.
 
 #+begin_src emacs-lisp
-  (maybe-install-and-require 'magit)
+  (ensure-installed-and-require 'magit)
   (global-set-key "\C-cg" 'magit-status)
 #+end_src
 
@@ -78,7 +78,7 @@
    variable from whatever your shell's =$PATH= is.
 
 #+begin_src emacs-lisp
-  (maybe-install-and-require 'exec-path-from-shell)
+  (ensure-installed-and-require 'exec-path-from-shell)
   (exec-path-from-shell-initialize)
 #+end_src
 
@@ -128,8 +128,8 @@
    clojure code.
 
 #+begin_src emacs-lisp
-  (maybe-install-and-require 'cider)
-  (maybe-install-and-require 'clojure-mode)
+  (ensure-installed-and-require 'cider)
+  (ensure-installed-and-require 'clojure-mode)
 #+end_src
 
    Files ending with =.clj= will automatically use clojure-mode, but
@@ -174,7 +174,7 @@
    think I cribbed it from somewhere on the internet.
 
 #+begin_src emacs-lisp
-  (maybe-install-and-require 'paredit)
+  (ensure-installed-and-require 'paredit)
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
   (add-hook 'clojure-mode-hook #'enable-paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
@@ -219,7 +219,7 @@
   major mode for editing puppet code:
 
 #+begin_src emacs-lisp
-  (maybe-install-and-require 'puppet-mode)
+  (ensure-installed-and-require 'puppet-mode)
 #+end_src
 
   When we edit =.pp= files, we want to automatically run puppet-mode:
@@ -231,7 +231,7 @@
 * Markdown
 
 #+begin_src emacs-lisp
-  (maybe-install-and-require 'markdown-mode)
+  (ensure-installed-and-require 'markdown-mode)
 #+end_src
 
 * org mode
