@@ -41,14 +41,14 @@
 
 ** magit
 
-  [[https://github.com/magit/magit][magit]] is the only way to interact with git.  Seriously, even when
-  I'm using other editors, I'll keep emacs open in order to use magit.
-  The main reasons I like it:
-  - easy manipulation of individual lines within a changeset
-  - one-character commands for all common operations (push, pull,
-    commit, rebase, merge..)
-  As a result, I bind a global key combination to =magit-status= so
-  it's always easy to get to.
+   [[https://github.com/magit/magit][magit]] is the only way to interact with git.  Seriously, even when
+   I'm using other editors, I'll keep emacs open in order to use magit.
+   The main reasons I like it:
+   - easy manipulation of individual lines within a changeset
+   - one-character commands for all common operations (push, pull,
+     commit, rebase, merge..)
+   As a result, I bind a global key combination to =magit-status= so
+   it's always easy to get to.
 
 #+begin_src emacs-lisp
   (maybe-install-and-require 'magit)
