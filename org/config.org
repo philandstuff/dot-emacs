@@ -15,8 +15,9 @@
 
 ** diminish
 
-   A package to manage how modes appear in the modeline.  See [[magit]]
-   for an example of use.
+   A package to manage how modes appear in the modeline (and, in
+   particular, hide boring minor modes we don't care about).  See
+   [[magit]] for an example of use.
 
 #+begin_src emacs-lisp
   (maybe-install-and-require 'diminish)
