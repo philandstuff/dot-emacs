@@ -294,7 +294,7 @@
 * rcirc
 
   rcirc is an irc client from within emacs.  Most of my settings are
-  in my [[*secrets]] file, as they contain passwords.
+  in my [[secrets]] file, as they contain passwords.
 
 ** rcirc-track
 
