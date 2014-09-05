@@ -135,7 +135,7 @@
     (font-lock-add-keywords
      nil `(("\\(\\<lambda\\>\\)"
             (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                      ,(make-char 'greek-iso8859-7 107))
+                                      ,(string-to-char "λ"))
                       nil))))))
 #+end_src
 
@@ -185,16 +185,13 @@
     (font-lock-add-keywords
      nil `(("\\(->\\)"
             (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                      8594 ;; unicode RIGHT ARROW
-                                      ))))
+                                      (string-to-char "→")))))
            ("\\(<-\\)"
             (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                      8592 ;; unicode LEFT ARROW
-                                      ))))
+                                      (string-to-char "←")))))
            ("\\(\\\\\\)"
             (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                      955 ;; unicode GREEK SMALL LETTER LAMBDA
-                                      )))))))
+                                      (string-to-char "λ"))))))))
 
   (add-hook 'haskell-mode-hook #'pretty-arrows)
 #+end_src
