@@ -10,11 +10,6 @@
 ;; flash on the screen before this suppresses it
 (setq inhibit-startup-message t)
 
-(defun maybe-install-and-require (p)
-  (when (not (package-installed-p p))
-    (package-install p))
-  (require p))
-
 ;; This bootstraps us if we don't have anything
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -24,8 +19,11 @@
 ;; note that otfrom's original version installs org-plus-contrib from
 ;; http://orgmode.org/elpa/ -- I don't know quite why yet so sticking
 ;; with this for the moment
-(maybe-install-and-require 'org)
+(when (not (package-installed-p 'org))
+  (package-install 'org))
+(require 'org)
 
+;; load the main config file
 (org-babel-load-file (concat user-emacs-directory "org/config.org"))
 
 ;; import local settings (deprecated, use /local/secrets.el.gpg instead)

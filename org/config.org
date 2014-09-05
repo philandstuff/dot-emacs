@@ -1,7 +1,19 @@
 #  -*- coding: utf-8 -*-
 
-* Global settings
+* Config helpers
+** maybe-install-and-require
 
+   This function calls =require= on a package, installing it if it's
+   not already installed.
+
+#+begin_src emacs-lisp
+  (defun maybe-install-and-require (p)
+    (when (not (package-installed-p p))
+      (package-install p))
+    (require p))
+#+end_src
+
+* Global settings
 ** better-defaults
   [[https://github.com/technomancy/better-defaults][better-defaults]] does a bunch of generic emacs interface tidying,
   including:
