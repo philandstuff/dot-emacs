@@ -322,6 +322,18 @@
   (rcirc-track-minor-mode 1)
 #+end_src
 
+** omit
+
+   Don't show JOIN and PART messages by default, except for people
+   with recent activity.  (This is the behaviour you get with =C-c
+   C-o= but I want it on by default.)  Also, don't show
+   rcirc-omit-mode in the modeline.
+
+#+begin_src emacs-lisp
+  (add-hook 'rcirc-mode-hook 'rcirc-omit-mode)
+  (diminish 'rcirc-omit-mode)
+#+end_src
+
 * local settings
   This repo has a /local directory, with all of its contents in
   =.gitignore=, containing various local settings.
