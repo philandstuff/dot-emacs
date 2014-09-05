@@ -1,0 +1,5 @@
+* Notes
+
+  This is where you can put files like your custom.el (containing
+  variables customized using custom.el), any passwords, and other bits
+  of config that are local to you and not to be shared.

@@ -6,6 +6,8 @@
 /eshell/history
 /eshell/lastdir
 /init-local.el
+/local/*
+!/local/README.org
 /org/*.el
 /places
 /session.*

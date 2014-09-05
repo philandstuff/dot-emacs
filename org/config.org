@@ -282,3 +282,19 @@
         '(":home" ":replies"))
 #+end_src
 
+* local settings
+** encrypted stuff
+
+   It is good to store your passwords and things in an encrypted
+   file.
+
+   This does mean that every time you use it you have to give the
+   passphrase, but it does mean that you can keep all your passwords
+   for things like rcirc and stuff in a file reasonably safely (though
+   it will be in memory when emacs is running, so it isn't completely
+   secure).
+
+   #+BEGIN_SRC emacs-lisp
+     (load (concat user-emacs-directory "local/secrets.el.gpg") 'noerror)
+   #+END_SRC
+
