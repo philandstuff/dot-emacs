@@ -36,5 +36,5 @@
 
 (add-to-list 'load-path dotfiles-dir)
 
-;; import local settings
+;; import local settings (deprecated, use /local/secrets.el.gpg instead)
 (require 'init-local nil 'noerror)
