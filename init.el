@@ -28,10 +28,6 @@
 
 (org-babel-load-file (concat user-emacs-directory "org/config.org"))
 
-;; set super (windows) key to act as meta
-(when (string-equal system-type "gnu/linux")
-  (setq x-super-keysym 'meta))
-
 ;; base load path
 (defconst dotfiles-dir
   (file-name-directory
@@ -39,13 +35,6 @@
   "Base path for customised Emacs configuration")
 
 (add-to-list 'load-path dotfiles-dir)
-
-;; twitter stuff
-
-(setq twittering-initial-timeline-spec-string
-      '(":home"
-        ":replies"
-        ))
 
 ;; import local settings
 (require 'init-local nil 'noerror)
@@ -56,5 +45,3 @@
  '(org-agenda-files (quote ("~/org/todo.org")))
  '(org-ditaa-jar-path "~/bin/ditaa.jar")
  '(rcirc-buffer-maximum-lines 2000))
-(put 'narrow-to-region 'disabled nil)
-(put 'upcase-region 'disabled nil)

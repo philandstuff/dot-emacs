@@ -1,6 +1,6 @@
 #  -*- coding: utf-8 -*-
 
-* Global stuff
+* Global settings
 
 ** better-defaults
   [[https://github.com/technomancy/better-defaults][better-defaults]] does a bunch of generic emacs interface tidying,
@@ -53,9 +53,7 @@
   (exec-path-from-shell-initialize)
 #+end_src
 
-** misc settings
-
-*** y-or-n-p
+** y-or-n-p
 
    This replaces dialogs which require a full "yes" or "no" to just
    require a simple "y" or "n".
@@ -64,7 +62,7 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
 #+end_src
 
-*** indicate empty lines
+** indicate empty lines
 
     This adds a graphic in the margin to show how many empty lines you
     have beyond the end of your file's content.
@@ -73,8 +71,27 @@
   (set-default 'indicate-empty-lines t)
 #+end_src
 
-* Lisp stuff
+** remap windows key ("super") to meta
 
+   On non-OS/X operating systems, I want the windows key on the
+   keyboard to be another meta key.
+
+#+begin_src emacs-lisp
+  (when (string-equal system-type "gnu/linux")
+    (setq x-super-keysym 'meta))
+#+end_src
+
+** enable commands
+
+   Emacs has a few commands which are disabled by default, because
+   they can be confusing.  Enable them here:
+
+#+begin_src emacs-lisp
+  (put 'narrow-to-region 'disabled nil)
+  (put 'upcase-region 'disabled nil)
+#+end_src
+
+* Lisp
 ** Clojure
 
    [[https://github.com/clojure-emacs/cider][cider]] is a package for live-coding Clojure by interacting with a
@@ -170,7 +187,6 @@
   (add-hook 'haskell-mode-hook #'pretty-arrows)
 #+end_src
 
-
 * puppet
 
   [[https://docs.puppetlabs.com/puppet/][Puppet]] is a configuration management language.  First, we want the
@@ -255,3 +271,14 @@
 #+begin_src emacs-lisp
   (setq org-src-fontify-natively t)
 #+end_src
+
+* twitter
+
+  Emacs's twittering-mode provides a twitter client.  This sets up the
+  default timelines that will be opened when I launch twittering-mode:
+
+#+begin_src emacs-lisp
+  (setq twittering-initial-timeline-spec-string
+        '(":home" ":replies"))
+#+end_src
+
