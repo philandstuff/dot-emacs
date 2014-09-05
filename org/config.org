@@ -282,6 +282,21 @@
         '(":home" ":replies"))
 #+end_src
 
+* rcirc
+
+  rcirc is an irc client from within emacs.  Most of my settings are
+  in my [[*secrets]] file, as they contain passwords.
+
+** rcirc-track
+
+   The rcirc-track-minor-mode is a global minor mode which adds an
+   indicator to the modeline indicating which irc buffers have had
+   activity, and also which buffers have mentioned you by nick:
+
+#+begin_src emacs-lisp
+  (rcirc-track-minor-mode 1)
+#+end_src
+
 * local settings
   This repo has a /local directory, with all of its contents in
   =.gitignore=, containing various local settings.
