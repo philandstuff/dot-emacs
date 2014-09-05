@@ -28,13 +28,5 @@
 
 (org-babel-load-file (concat user-emacs-directory "org/config.org"))
 
-;; base load path
-(defconst dotfiles-dir
-  (file-name-directory
-   (or (buffer-file-name) load-file-name))
-  "Base path for customised Emacs configuration")
-
-(add-to-list 'load-path dotfiles-dir)
-
 ;; import local settings (deprecated, use /local/secrets.el.gpg instead)
-(require 'init-local nil 'noerror)
+(load (concat user-emacs-directory "init-local.el") 'noerror)
