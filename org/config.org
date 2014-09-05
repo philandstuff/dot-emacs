@@ -283,7 +283,21 @@
 #+end_src
 
 * local settings
-** encrypted stuff
+  This repo has a /local directory, with all of its contents in
+  =.gitignore=, containing various local settings.
+
+** customized variables
+   custom.el provides a mechanism for customizing emacs variables from
+   within emacs.  To make such changes permanent, it will put changes
+   into =custom-file= which by default is =init.el=.  To avoid
+   polluting that file, we set it to something else:
+
+   #+BEGIN_SRC emacs-lisp
+     (setq custom-file (concat user-emacs-directory "local/custom.el"))
+     (load custom-file 'noerror)
+   #+END_SRC
+
+** secrets
 
    It is good to store your passwords and things in an encrypted
    file.
