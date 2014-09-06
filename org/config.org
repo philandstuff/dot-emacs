@@ -7,9 +7,12 @@
    not already installed.
 
 #+begin_src emacs-lisp
-  (defun ensure-installed-and-require (p)
+  (defun ensure-installed (p)
     (when (not (package-installed-p p))
-      (package-install p))
+      (package-install p)))
+
+  (defun ensure-installed-and-require (p)
+    (ensure-installed p)
     (require p))
 #+end_src
 
@@ -29,8 +32,11 @@
   including:
   - better buffer unique names
   - turn off scrollbar, menu bar, toolbar
+
+  It does all its work in autoloads, so you don't need to require it;
+  being installed is enough.
 #+begin_src emacs-lisp
-  (ensure-installed-and-require 'better-defaults)
+  (ensure-installed 'better-defaults)
 #+end_src
 
 ** ido
