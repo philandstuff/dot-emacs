@@ -346,7 +346,7 @@
    polluting that file, we set it to something else:
 
    #+BEGIN_SRC emacs-lisp
-     (setq custom-file (concat user-emacs-directory "local/custom.el"))
+     (setq custom-file (concat user-emacs-directory "custom.el"))
      (load custom-file 'noerror)
    #+END_SRC
 
