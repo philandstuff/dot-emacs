@@ -132,13 +132,6 @@
   (ensure-installed-and-require 'clojure-mode)
 #+end_src
 
-   Files ending with =.clj= will automatically use clojure-mode, but
-   =.cljs= seems to need configuration:
-
-#+begin_src emacs-lisp
-  (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
-#+end_src
-
 ** Pretty lambdas
 
    Font-lock stuff to display character sequences such as =lambda= as
