@@ -186,7 +186,7 @@
 ** Haskell mode
 
 #+begin_src emacs-lisp
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+  (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
 #+end_src
 
 ** Pretty arrows
@@ -331,7 +331,7 @@
    rcirc-omit-mode in the modeline.
 
 #+begin_src emacs-lisp
-  (add-hook 'rcirc-mode-hook 'rcirc-omit-mode)
+  (add-hook 'rcirc-mode-hook #'rcirc-omit-mode)
   (diminish 'rcirc-omit-mode)
 #+end_src
 
