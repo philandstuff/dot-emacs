@@ -177,10 +177,10 @@
 
 * Haskell
 
-** Haskell mode
-
 #+begin_src emacs-lisp
-  (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
+  (ensure-installed 'haskell-mode)
+  (eval-after-load 'haskell-mode
+    '(add-hook 'haskell-mode-hook #'turn-on-haskell-indentation))
 #+end_src
 
 ** Pretty arrows
@@ -192,19 +192,18 @@
    - =\= gets turned into λ
 
 #+begin_src emacs-lisp
-  (defun pretty-arrows ()
-    (font-lock-add-keywords
-     nil `(("\\(->\\)"
-            (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                      (string-to-char "→")))))
-           ("\\(<-\\)"
-            (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                      (string-to-char "←")))))
-           ("\\(\\\\\\)"
-            (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                      (string-to-char "λ"))))))))
-
-  (add-hook 'haskell-mode-hook #'pretty-arrows)
+  (eval-after-load 'haskell-mode
+    '(font-lock-add-keywords
+      'haskell-mode
+      `(("\\(->\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   (string-to-char "→")))))
+        ("\\(<-\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   (string-to-char "←")))))
+        ("\\(\\\\\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   (string-to-char "λ"))))))))
 #+end_src
 
 * puppet
