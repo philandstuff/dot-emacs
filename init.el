@@ -1,9 +1,10 @@
 (require 'package)
-(add-to-list 'package-archives 
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(setq package-archives '(;; ("gnu" . "http://elpa.gnu.org/packages/")
+			 ;; ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 (package-initialize)
 
 ;; I want this really early on so you don't see the startup message
@@ -14,13 +15,9 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; org-mode always needs to be installed in an emacs where it isn't loaded.
-;;
-;; note that otfrom's original version installs org-plus-contrib from
-;; http://orgmode.org/elpa/ -- I don't know quite why yet so sticking
-;; with this for the moment
-(when (not (package-installed-p 'org))
-  (package-install 'org))
+;; org-mode always needs to be installed if it's not already present
+(when (not (package-installed-p 'org-plus-contrib))
+  (package-install 'org-plus-contrib))
 (require 'org)
 
 ;; load the main config file
