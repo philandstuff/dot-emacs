@@ -351,4 +351,6 @@
    #+BEGIN_SRC emacs-lisp
      (load (concat user-emacs-directory "local/secrets.el.gpg") 'noerror)
    #+END_SRC
-
+* Possible future work
+** TODO investigate cask for gemfile-like packaging
+   - alternative: just check dependencies in
