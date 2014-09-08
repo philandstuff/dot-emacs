@@ -22,6 +22,3 @@
 
 ;; load the main config file
 (org-babel-load-file (concat user-emacs-directory "org/config.org"))
-
-;; import local settings (deprecated, use /local/secrets.el.gpg instead)
-(load (concat user-emacs-directory "init-local.el") 'noerror)
