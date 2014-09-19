@@ -285,6 +285,19 @@
   (setq org-src-fontify-natively t)
 #+end_src
 
+** emphasis
+
+I often use =~tildes for typewriter font~=.  However org-mode's
+default configuration breaks on a number of code examples.  I'd like
+to highlight ~"strings"~, ~'quoted-symbols~, and ~'(quoted lists)~.
+This is the standard value, without ='= and ="= in the disallowed
+BORDER character regexp.
+
+#+begin_src elisp
+  (setq org-emphasis-regexp-components '("        ('\"{" "-       .,:!?;'\")}\\" "        
+  ," "." 1))
+#+end_src
+
 * twitter
 
   Emacs's twittering-mode provides a twitter client.  This sets up the
