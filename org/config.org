@@ -189,6 +189,7 @@
 
    - =->= (used in function types) gets turned into →
    - =<-= (used in do-notation) gets turned into ←
+   - ~=>~ (used in types) gets turned into ⇒
    - =\= gets turned into λ
 
 #+begin_src emacs-lisp
@@ -198,6 +199,9 @@
       `(("\\(->\\)"
          (0 (progn (compose-region (match-beginning 1) (match-end 1)
                                    (string-to-char "→")))))
+        ("\\(=>\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   (string-to-char "⇒")))))
         ("\\(<-\\)"
          (0 (progn (compose-region (match-beginning 1) (match-end 1)
                                    (string-to-char "←")))))
