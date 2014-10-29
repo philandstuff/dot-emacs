@@ -180,7 +180,9 @@
 #+begin_src emacs-lisp
   (ensure-installed 'haskell-mode)
   (eval-after-load 'haskell-mode
-    '(add-hook 'haskell-mode-hook #'turn-on-haskell-indentation))
+    '(progn
+       (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
+       (add-hook 'haskell-mode-hook #'interactive-haskell-mode)))
 #+end_src
 
 ** Pretty arrows
