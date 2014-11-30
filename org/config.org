@@ -304,6 +304,21 @@ BORDER character regexp.
   ," "." 1))
 #+end_src
 
+* html
+
+[[https://github.com/magnars/tagedit][Tagedit]] is a minor mode which adds paredit-like features to sgml-mode
+(ie when editing html documents).
+
+#+begin_src emacs-lisp
+  (ensure-installed 'tagedit)
+  (eval-after-load "sgml-mode"
+    '(progn
+       (require 'tagedit)
+       (tagedit-add-paredit-like-keybindings)
+       (add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))))
+
+#+end_src
+
 * twitter
 
   Emacs's twittering-mode provides a twitter client.  This sets up the
