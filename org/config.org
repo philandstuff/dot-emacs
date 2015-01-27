@@ -356,6 +356,17 @@ BORDER character regexp.
   (diminish 'rcirc-omit-mode)
 #+end_src
 
+* projectile
+
+[[https://github.com/bbatsov/projectile][Projectile]] is a minor mode which allows you to quickly navigate to
+files within the same project.
+
+#+begin_src emacs-lisp
+  (ensure-installed 'projectile)
+  (projectile-global-mode)
+  (diminish 'projectile-mode)
+#+end_src
+
 * local settings
   This repo has a /local directory, with all of its contents in
   =.gitignore=, containing various local settings.
