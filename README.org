@@ -1,0 +1,4 @@
+This is my emacs config.  It is published as a literate program, using
+org-babel.  I stole the idea from [[https://github.com/otfrom/otfrom-org-emacs/][@otfrom's emacs config]].
+
+You'll want to look at [[org/config.org]].
