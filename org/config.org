@@ -123,6 +123,15 @@
   (put 'upcase-region 'disabled nil)
 #+end_src
 
+** debugging
+
+I want to debug errors that occur, rather than just getting an error
+message in the minibuffer.
+
+#+begin_src emacs-lisp
+  (setq debug-on-error t)
+#+end_src
+
 * Lisp
 ** Clojure
 
