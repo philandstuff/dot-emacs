@@ -67,14 +67,6 @@
   (global-set-key "\C-cg" 'magit-status)
 #+end_src
 
-   Any git buffer will have magit-auto-revert-mode active; there's no
-   need to have both =Git= and =MRev= in the modeline.
-
-#+begin_src emacs-lisp
-  (eval-after-load 'magit
-    '(diminish 'magit-auto-revert-mode))
-#+end_src
-
 ** exec-path-from-shell
 
    This is a little package that initializes emacs's =exec-path=
