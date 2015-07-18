@@ -221,6 +221,14 @@ message in the minibuffer.
                                    (string-to-char "λ"))))))))
 #+end_src
 
+* nix
+
+Stuff for [[http://nixos.org/][nixos and nix]].
+
+#+begin_src emacs-lisp
+    (ensure-installed 'nix-mode)
+#+end_src
+
 * puppet
 
   [[https://docs.puppetlabs.com/puppet/][Puppet]] is a configuration management language.  First, we want the
