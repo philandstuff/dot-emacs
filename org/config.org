@@ -186,6 +186,7 @@
    - =<-= (used in do-notation) gets turned into ←
    - ~=>~ (used in types) gets turned into ⇒
    - =\= gets turned into λ
+   - =::= gets turned into ∷
 
 #+begin_src emacs-lisp
   (eval-after-load 'haskell-mode
@@ -202,7 +203,10 @@
                                    (string-to-char "←")))))
         ("\\(\\\\\\)"
          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   (string-to-char "λ"))))))))
+                                   (string-to-char "λ")))))
+        ("\\(::\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   (string-to-char "∷"))))))))
 #+end_src
 
 * nix
