@@ -116,6 +116,30 @@
 #+end_src
 
 
+* GPG
+
+From [[https://gist.github.com/jupp0r/08ca64b7c14c6093bba2][this gist]], a way to access gpg-agent from =~/.gpg-agent-info=
+rather than from environment variables (which may be subverted by
+gnome-keychain or OS X keychain instead of a true gpg agent).
+
+#+begin_src emacs-lisp
+  (defun read-env-line (line)
+    "read a env line and post to environment"
+    (let ((key-value-pair (split-string line "=" t)))
+      (setenv (car key-value-pair) (car (last key-value-pair))))
+    )
+  (defvar gpg-agent-info-file)
+  (setq gpg-agent-info-file (concat (getenv "HOME") "/.gpg-agent-info"))
+  (when
+      (file-exists-p gpg-agent-info-file)
+    (with-temp-buffer
+      (progn
+        (insert-file-contents gpg-agent-info-file)
+        (mapc 'read-env-line (split-string (buffer-string) "\n" t)))
+      ))
+#+end_src
+
+
 * Lisp
 ** Clojure
 
