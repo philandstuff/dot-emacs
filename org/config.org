@@ -198,8 +198,7 @@ gnome-keychain or OS X keychain instead of a true gpg agent).
   (ensure-installed 'haskell-mode)
   (eval-after-load 'haskell-mode
     '(progn
-       (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
-       (add-hook 'haskell-mode-hook #'interactive-haskell-mode)))
+       (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)))
 #+end_src
 
 ** Pretty arrows
