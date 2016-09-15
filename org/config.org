@@ -115,6 +115,16 @@
   (put 'upcase-region 'disabled nil)
 #+end_src
 
+** visible bell
+
+#+BEGIN_SRC emacs-lisp
+  (setq visible-bell nil)
+  (setq ring-bell-function
+        (lambda ()
+          (invert-face 'mode-line)
+          (run-with-timer 0.1 nil 'invert-face 'mode-line)))
+#+END_SRC
+
 
 * GPG
 
