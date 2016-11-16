@@ -162,7 +162,7 @@ Settings so that gpg-agent gets used as SSH_AUTH_SOCK.
     (font-lock-add-keywords
      nil `(("\\(\\<lambda\\>\\)"
             (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                      ,(string-to-char "λ"))
+                                      ?λ)
                       nil))))))
 #+end_src
 
@@ -214,19 +214,19 @@ Settings so that gpg-agent gets used as SSH_AUTH_SOCK.
       'haskell-mode
       `(("\\(->\\)"
          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   (string-to-char "→")))))
+                                   ?→))))
         ("\\(=>\\)"
          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   (string-to-char "⇒")))))
+                                   ?⇒))))
         ("\\(<-\\)"
          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   (string-to-char "←")))))
+                                   ?←))))
         ("\\(\\\\\\)"
          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   (string-to-char "λ")))))
+                                   ?λ))))
         ("\\(::\\)"
          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   (string-to-char "∷"))))))))
+                                   ?∷)))))))
 #+end_src
 
 * nix
