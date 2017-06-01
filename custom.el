@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(geiser-racket-binary "~/racket/bin/racket")
+ '(js-indent-level 2)
  '(magit-popup-use-prefix-argument (quote default))
  '(markdown-command "kramdown")
  '(org-agenda-files (quote ("~/org/todo.org")))

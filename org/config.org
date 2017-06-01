@@ -127,6 +127,14 @@
           (run-with-timer 0.1 nil 'invert-face 'mode-line)))
 #+END_SRC
 
+** flycheck
+
+#+begin_src emacs-lisp
+  (require 'flycheck)
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  (diminish 'flycheck-mode)
+#+end_src
+
 
 * GPG
 
@@ -136,6 +144,29 @@ Settings so that gpg-agent gets used as SSH_AUTH_SOCK.
   (setenv "SSH_AUTH_SOCK" (concat (getenv "HOME") "/.gnupg/S.gpg-agent.ssh"))
 #+end_src
 
+* Javascript
+** eslint
+
+I cribbed a lot of this from [[http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html][a nice blog post]].
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default flycheck-disabled-checkers
+    (append flycheck-disabled-checkers
+            '(javascript-jshint)))
+
+  ;; use local eslint from node_modules before global
+  ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
+  (defun my/use-eslint-from-node-modules ()
+    (let* ((root (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules"))
+           (eslint (and root
+                        (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                          root))))
+      (when (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint))))
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+#+END_SRC
 
 * Lisp
 ** Clojure
