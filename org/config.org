@@ -32,17 +32,19 @@
   being installed is enough.
 #+begin_src emacs-lisp
   (ensure-installed 'better-defaults)
+  (require 'better-defaults)
 #+end_src
 
 ** ido
 
-  ido-ubiquitous enables ido in many places.  (better-defaults already
+  ido-completing-read enables ido in many places.  (better-defaults already
   enables ido for some things, this just goes further).  smex adds
   ido-like behaviour to =M-x=.
 #+begin_src emacs-lisp
-  (ensure-installed 'ido-ubiquitous)
-  (ido-mode t)
-  (ido-ubiquitous-mode t)
+  (ensure-installed 'ido-completing-read+)
+  (ido-mode 1)
+  (ido-everywhere 1)
+  (ido-ubiquitous-mode 1)
 
   (ensure-installed 'smex)
   (require 'smex)
