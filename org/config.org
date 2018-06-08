@@ -390,6 +390,14 @@ files within the same project.
   (diminish 'projectile-mode)
 #+end_src
 
+* terraform
+
+#+begin_src emacs-lisp
+  (ensure-installed 'terraform-mode)
+  (eval-after-load 'terraform-mode
+    '(add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
+#+end_src
+
 * local settings
   This repo has a /local directory, with all of its contents in
   =.gitignore=, containing various local settings.
