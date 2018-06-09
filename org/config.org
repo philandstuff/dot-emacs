@@ -177,6 +177,11 @@ I cribbed a lot of this from [[http://codewinds.com/blog/2015-04-02-emacs-flyche
 
   (add-hook 'flycheck-mode-hook #'my/flycheck-mode-hook)
 #+END_SRC
+** elm
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load 'flycheck
+    '(flycheck-elm-setup))
+#+END_SRC
 
 * Lisp
 ** Clojure
@@ -236,7 +241,11 @@ I cribbed a lot of this from [[http://codewinds.com/blog/2015-04-02-emacs-flyche
   (ensure-installed 'haskell-mode)
   (eval-after-load 'haskell-mode
     '(progn
-       (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)))
+       (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
+       (add-hook ’haskell-mode-hook ’interactive-haskell-mode)))
+  (setq haskell-process-wrapper-function
+        (lambda (args) (apply 'nix-shell-command (nix-current-sandbox) args)))
+
 #+end_src
 
 ** Pretty arrows
@@ -275,7 +284,8 @@ I cribbed a lot of this from [[http://codewinds.com/blog/2015-04-02-emacs-flyche
 Stuff for [[http://nixos.org/][nixos and nix]].
 
 #+begin_src emacs-lisp
-    (ensure-installed 'nix-mode)
+  (ensure-installed 'nix-mode)
+  (ensure-installed 'nix-sandbox)
 #+end_src
 
 * puppet
@@ -306,6 +316,7 @@ Stuff for [[http://nixos.org/][nixos and nix]].
 
 #+begin_src emacs-lisp
   (global-set-key "\C-cc" 'org-capture)
+  (setq org-directory (concat (getenv "HOME") "/ownCloud/org"))
   (setq org-default-notes-file (concat org-directory "/todo.org"))
 #+end_src
 
