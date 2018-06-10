@@ -145,6 +145,50 @@ Settings so that gpg-agent gets used as SSH_AUTH_SOCK.
   (setenv "SSH_AUTH_SOCK" (shell-command-to-string "gpgconf --list-dir agent-ssh-socket | tr -d '\\n'"))
 #+end_src
 
+* Haskell
+
+#+begin_src emacs-lisp
+  (ensure-installed 'haskell-mode)
+  (eval-after-load 'haskell-mode
+    '(progn
+       (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
+       (add-hook 'haskell-mode-hook #'interactive-haskell-mode)))
+  (setq haskell-process-wrapper-function
+        (lambda (args) (apply 'nix-shell-command (nix-current-sandbox) args)))
+
+#+end_src
+
+** Pretty arrows
+
+   Font-lock stuff:
+
+   - =->= (used in function types) gets turned into →
+   - =<-= (used in do-notation) gets turned into ←
+   - ~=>~ (used in types) gets turned into ⇒
+   - =\= gets turned into λ
+   - =::= gets turned into ∷
+
+#+begin_src emacs-lisp
+  (eval-after-load 'haskell-mode
+    '(font-lock-add-keywords
+      'haskell-mode
+      `(("\\(->\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   ?→))))
+        ("\\(=>\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   ?⇒))))
+        ("\\(<-\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   ?←))))
+        ("\\(\\\\\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   ?λ))))
+        ("\\(::\\)"
+         (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                   ?∷)))))))
+#+end_src
+
 * Javascript
 ** eslint
 
@@ -235,50 +279,6 @@ I cribbed a lot of this from [[http://codewinds.com/blog/2015-04-02-emacs-flyche
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
   (eval-after-load 'scheme
     '(add-hook 'scheme-mode-hook #'enable-paredit-mode))
-#+end_src
-
-* Haskell
-
-#+begin_src emacs-lisp
-  (ensure-installed 'haskell-mode)
-  (eval-after-load 'haskell-mode
-    '(progn
-       (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
-       (add-hook 'haskell-mode-hook 'interactive-haskell-mode)))
-  (setq haskell-process-wrapper-function
-        (lambda (args) (apply 'nix-shell-command (nix-current-sandbox) args)))
-
-#+end_src
-
-** Pretty arrows
-
-   Font-lock stuff:
-
-   - =->= (used in function types) gets turned into →
-   - =<-= (used in do-notation) gets turned into ←
-   - ~=>~ (used in types) gets turned into ⇒
-   - =\= gets turned into λ
-   - =::= gets turned into ∷
-
-#+begin_src emacs-lisp
-  (eval-after-load 'haskell-mode
-    '(font-lock-add-keywords
-      'haskell-mode
-      `(("\\(->\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?→))))
-        ("\\(=>\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?⇒))))
-        ("\\(<-\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?←))))
-        ("\\(\\\\\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?λ))))
-        ("\\(::\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?∷)))))))
 #+end_src
 
 * nix
