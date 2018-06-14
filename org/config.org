@@ -130,6 +130,7 @@
 ** flycheck
 
 #+begin_src emacs-lisp
+  (ensure-installed 'flycheck)
   (require 'flycheck)
   (add-hook 'after-init-hook #'global-flycheck-mode)
   (diminish 'flycheck-mode)
@@ -179,6 +180,7 @@ I cribbed a lot of this from [[http://codewinds.com/blog/2015-04-02-emacs-flyche
 #+END_SRC
 ** elm
 #+BEGIN_SRC emacs-lisp
+  (ensure-installed 'flycheck-elm)
   (eval-after-load 'flycheck
     '(flycheck-elm-setup))
 #+END_SRC
