@@ -244,7 +244,7 @@ I cribbed a lot of this from [[http://codewinds.com/blog/2015-04-02-emacs-flyche
   (eval-after-load 'haskell-mode
     '(progn
        (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
-       (add-hook ’haskell-mode-hook ’interactive-haskell-mode)))
+       (add-hook 'haskell-mode-hook 'interactive-haskell-mode)))
   (setq haskell-process-wrapper-function
         (lambda (args) (apply 'nix-shell-command (nix-current-sandbox) args)))
 
