@@ -256,6 +256,16 @@ Stuff for [[http://nixos.org/][nixos and nix]].
   (ensure-installed 'puppet-mode)
 #+end_src
 
+* golang
+
+#+BEGIN_SRC emacs-lisp
+  (ensure-installed 'go-mode)
+
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save)
+#+END_SRC
+
+
 * Markdown
 
 #+begin_src emacs-lisp
