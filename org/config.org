@@ -158,36 +158,16 @@ Settings so that gpg-agent gets used as SSH_AUTH_SOCK.
 
 #+end_src
 
-** Pretty arrows
+* Pretty-mode
 
-   Font-lock stuff:
+This adds pretty arrows, lambdas, etc to Haskell and friends
 
-   - =->= (used in function types) gets turned into →
-   - =<-= (used in do-notation) gets turned into ←
-   - ~=>~ (used in types) gets turned into ⇒
-   - =\= gets turned into λ
-   - =::= gets turned into ∷
+#+BEGIN_SRC emacs-lisp
+  (ensure-installed 'pretty-mode)
 
-#+begin_src emacs-lisp
-  (eval-after-load 'haskell-mode
-    '(font-lock-add-keywords
-      'haskell-mode
-      `(("\\(->\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?→))))
-        ("\\(=>\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?⇒))))
-        ("\\(<-\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?←))))
-        ("\\(\\\\\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?λ))))
-        ("\\(::\\)"
-         (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                   ?∷)))))))
-#+end_src
+  (global-pretty-mode 1)
+#+END_SRC
+
 
 * Javascript
 ** eslint
@@ -241,29 +221,6 @@ I cribbed a lot of this from [[http://codewinds.com/blog/2015-04-02-emacs-flyche
   (ensure-installed 'clojure-mode)
 #+end_src
 
-** Pretty lambdas
-
-   Font-lock stuff to display character sequences such as =lambda= as
-   unicode chars such as λ.
-
-   First, we define the font-lock function to detect the appropriate
-   sequence and what to replace it with:
-
-#+begin_src emacs-lisp
-  (defun pretty-lambdas ()
-    (font-lock-add-keywords
-     nil `(("\\(\\<lambda\\>\\)"
-            (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                      ?λ)
-                      nil))))))
-#+end_src
-
-   Then we add it to some lisp modes:
-
-#+begin_src emacs-lisp
-  (add-hook 'clojure-mode-hook #'pretty-lambdas)
-  (add-hook 'scheme-mode-hook #'pretty-lambdas)
-#+end_src
 
 ** Paredit
 
