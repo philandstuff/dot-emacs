@@ -137,14 +137,6 @@
 #+end_src
 
 
-* GPG
-
-Settings so that gpg-agent gets used as SSH_AUTH_SOCK.
-
-#+begin_src emacs-lisp
-  (setenv "SSH_AUTH_SOCK" (shell-command-to-string "gpgconf --list-dir agent-ssh-socket | tr -d '\\n'"))
-#+end_src
-
 * Haskell
 
 #+begin_src emacs-lisp
