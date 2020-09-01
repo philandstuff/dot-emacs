@@ -8,11 +8,6 @@
 
 (package-initialize)
 
-;; Mitigate Bug#28350 (security) in Emacs 25.2 and earlier.
-(eval-after-load "enriched"
-  '(defun enriched-decode-display-prop (start end &optional param)
-     (list start end)))
-
 ;; I want this really early on so you don't see the startup message
 ;; flash on the screen before this suppresses it
 (setq inhibit-startup-message t)
