@@ -11,6 +11,16 @@
       (package-install p)))
 #+end_src
 
+** use-package
+
+#+BEGIN_SRC emacs-lisp
+  ;; This is only needed once, near the top of the file
+  (eval-when-compile
+    ;; Following line is not needed if use-package.el is in ~/.emacs.d
+    (ensure-installed 'use-package)
+    (require 'use-package))
+#+END_SRC
+
 ** diminish
 
    A package to manage how modes appear in the modeline (and, in
@@ -136,6 +146,35 @@
   (diminish 'flycheck-mode)
 #+end_src
 
+* lsp-mode
+
+The LSP mode is useful for multiple languages.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :ensure t
+    :commands (lsp lsp-deferred)
+    :hook (go-mode . lsp-deferred))
+
+  ;; provides fancier overlays
+  (use-package lsp-ui
+    :ensure t
+    :commands lsp-ui-mode)
+#+END_SRC
+
+* company-mode
+
+Company mode is a standard completion package that works well with lsp-mode.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :ensure t
+    :config
+    ;; Optionally enable completion-as-you-type behavior.
+    (setq company-idle-delay 0)
+    (setq company-minimum-prefix-length 1))
+#+END_SRC
+
 
 * Haskell
 
@@ -251,10 +290,12 @@ Stuff for [[http://nixos.org/][nixos and nix]].
 * golang
 
 #+BEGIN_SRC emacs-lisp
-  (ensure-installed 'go-mode)
-
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save)
+  ;; Set up before-save hooks to format buffer and add/delete imports.
+  ;; Make sure you don't have other gofmt/goimports hooks enabled.
+  (defun lsp-go-install-save-hooks ()
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 #+END_SRC
 
 
