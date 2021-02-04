@@ -303,6 +303,9 @@ Stuff for [[http://nixos.org/][nixos and nix]].
 
 #+begin_src emacs-lisp
   (ensure-installed 'markdown-mode)
+  (add-hook 'markdown-mode-hook (lambda ()
+                                  (variable-pitch-mode 1)
+                                  (visual-line-mode 1)))
 #+end_src
 
 * org mode
