@@ -117,6 +117,14 @@
     (setq x-super-keysym 'meta))
 #+end_src
 
+** disable C-z
+
+I hit this by mistake all the time and it's never what I want.
+
+#+BEGIN_SRC emacs-lisp
+  (global-unset-key (kbd "C-z"))
+#+END_SRC
+
 ** enable commands
 
    Emacs has a few commands which are disabled by default, because
